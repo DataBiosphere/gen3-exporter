@@ -220,7 +220,7 @@ class Exporter:
         response = requests.get(url, headers=self.headers())
         try:
             submissions = response.json()['data']
-        except KeyError as e:
+        except (KeyError, ValueError, UnicodeDecodeError) as e:
             message = '''WARNING!!! There was a problem parsing the 
                          submission for {}, missing key: {}'''.format(my_type, str(e))
             print(message, file=sys.stderr)
