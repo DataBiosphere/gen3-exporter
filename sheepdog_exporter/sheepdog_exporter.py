@@ -431,8 +431,8 @@ class Exporter:
         project_dict = self.get_project_by_code(project)
         print('Requesting metadata submissions.')
         submissions = self.get_all_submissions(program, project)
-        submissions['program'] = program_dict
-        submissions['project'] = project_dict
+        submissions['program'] = [program_dict]
+        submissions['project'] = [project_dict]
         print('Received all metadata submissions!')
         print('Generating file manifest, this may take some time...')
         manifest = self.manifest(program, project, submissions)
