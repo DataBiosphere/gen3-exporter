@@ -276,6 +276,10 @@ class Exporter:
           state
           support_id
           support_source
+          programs{
+              name
+              id
+            }
         }}""" % project_code
         query = {'query': query_string}
         try:
