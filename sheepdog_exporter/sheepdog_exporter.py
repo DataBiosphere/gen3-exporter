@@ -391,6 +391,10 @@ class Exporter:
         '''
         data_file_categories = ['data_file', 'metadata_file', 'index_file']
         type_schema = self.get_schema_for_type(program, project, my_type)
+        for property_key in type_schema['properties']:
+            description = type_schema['properties'][property_key].get('description', 'blank')
+            if 'HARMONIZED' in description:
+                print('type:', my_type, 'prop', property_key, description)
         if type_schema.get('category', '') in data_file_categories:
             return True
         else:
